@@ -2,7 +2,7 @@
 	"name": "backend",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "dist/server.js",
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
 		"build": "tsc",
@@ -11,12 +11,13 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"type": "commonjs",
+	"type": "module",
 	"dependencies": {
 		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.6",
 		"dotenv": "^17.4.2",
 		"express": "^5.2.1",
+		"express-validator": "^7.3.2",
 		"mongoose": "^9.9.1"
 	},
 	"devDependencies": {
