@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { createSkill, editSkill, getSkills, deleteSkill, getById, } from "../controllers/skill.js";
+import { validate } from "../middlewares/validate.js";
+import { skillValidationRules } from "../validations/skill.js";
+const router = Router();
+router.get("/", getSkills);
+router.post("/", skillValidationRules, validate, createSkill);
+router.put("/:id", skillValidationRules, validate, editSkill);
+router.get("/:id", getById);
+router.delete("/:id", deleteSkill);
+export default router;
