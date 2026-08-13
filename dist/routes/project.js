@@ -1,1 +1,15 @@
-export {};
+import { Router } from "express";
+import { projectValidationRules } from "../validations/project.js";
+import { uploadImage } from "../middlewares/uploadImage.js";
+import { validate } from "../middlewares/validate.js";
+import { parseProjectData } from "../middlewares/parseProjectData.js";
+import { changeImage, createProject, deleteProject, editProject, getAll, getProjectById, } from "../controllers/project.js";
+import { upload } from "../middlewares/multer.js";
+const router = Router();
+router.post("/", upload.single("image"), uploadImage, parseProjectData, projectValidationRules, validate, createProject);
+router.get("/", getAll);
+router.get("/:id", getProjectById);
+router.patch("/:id", projectValidationRules, validate, editProject);
+router.patch("/:id/image", upload.single("image"), uploadImage, changeImage);
+router.delete("/:id", deleteProject);
+export default router;

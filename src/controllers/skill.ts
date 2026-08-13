@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 import type { SkillType } from "../types/skill.ts";
 import type { ErrorResponse } from "../types/common.ts";

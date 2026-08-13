@@ -1,15 +1,20 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import skillRoutes from "./routes/skill.js";
+dotenv.config();
 const app = express();
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-}));
+import skillRoutes from "./routes/skill.js";
+import progectRoutes from "./routes/project.js";
+// MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+}));
 app.get("/", (_, res) => {
     res.json({
         success: true,
@@ -18,4 +23,6 @@ app.get("/", (_, res) => {
 });
 // Skills Routes
 app.use("/api/skills", skillRoutes);
+// PROJECT ROUTES
+app.use("/api/projects", progectRoutes);
 export default app;
