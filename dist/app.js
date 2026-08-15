@@ -6,6 +6,7 @@ dotenv.config();
 const app = express();
 import skillRoutes from "./routes/skill.js";
 import progectRoutes from "./routes/project.js";
+import contactRoutes from "./routes/contact.js";
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,4 +26,6 @@ app.get("/", (_, res) => {
 app.use("/api/skills", skillRoutes);
 // PROJECT ROUTES
 app.use("/api/projects", progectRoutes);
+// PROJECT ROUTES
+app.use("/api/contact", contactRoutes);
 export default app;
