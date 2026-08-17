@@ -7,6 +7,7 @@ const app = express();
 import skillRoutes from "./routes/skill.js";
 import progectRoutes from "./routes/project.js";
 import contactRoutes from "./routes/contact.js";
+import authtRoutes from "./routes/admin.js";
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,4 +29,6 @@ app.use("/api/skills", skillRoutes);
 app.use("/api/projects", progectRoutes);
 // PROJECT ROUTES
 app.use("/api/contact", contactRoutes);
+// AUTH ROUTES
+app.use("/api/admin", authtRoutes);
 export default app;
