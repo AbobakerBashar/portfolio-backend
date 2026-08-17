@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import type { Project as ProjectType } from "../types/project.js";
+import type { Project as IProject } from "../types/project.js";
 
-const projectSchema = new mongoose.Schema<ProjectType & { image: string }>(
+const projectSchema = new mongoose.Schema<IProject & { image: string }>(
 	{
 		title: {
 			type: String,
