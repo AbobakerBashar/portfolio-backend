@@ -1,13 +1,24 @@
 import mongoose from "mongoose";
+import type { ISettings } from "../types/auth.js";
 
-const portfolioSettingsSchema = new mongoose.Schema(
+const settingsSchema = new mongoose.Schema<ISettings & { _key: string }>(
 	{
+		_key: {
+			type: String,
+			unique: true,
+			default: "portfolio",
+			immutable: true,
+		},
 		profile: {
 			name: {
 				type: String,
 				trim: true,
 			},
 			title: {
+				type: String,
+				trim: true,
+			},
+			tagline: {
 				type: String,
 				trim: true,
 			},
@@ -29,6 +40,7 @@ const portfolioSettingsSchema = new mongoose.Schema(
 			linkedin: String,
 			twitter: String,
 			instagram: String,
+			website: String,
 		},
 
 		resume: {
@@ -42,13 +54,20 @@ const portfolioSettingsSchema = new mongoose.Schema(
 			},
 			message: String,
 		},
+
+		typingTexts: {
+			type: [String],
+			default: [
+				"Full-Stack JavaScript Developer",
+				"Next.js & React Specialist",
+				"Node.js Backend Engineer",
+				"TypeScript Enthusiast",
+			],
+		},
 	},
 	{ timestamps: true },
 );
 
-const PortfolioSettings = mongoose.model(
-	"PortfolioSetting",
-	portfolioSettingsSchema,
-);
+const Settings = mongoose.model("PortfolioSetting", settingsSchema);
 
-export default PortfolioSettings;
+export default Settings;

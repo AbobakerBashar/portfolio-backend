@@ -73,7 +73,7 @@ export const getAll = async (req, res) => {
     }
     catch (error) {
         res.status(500).json({
-            message: "Internal server error",
+            message: "Internal server error.",
             success: false,
             error: error.message,
         });

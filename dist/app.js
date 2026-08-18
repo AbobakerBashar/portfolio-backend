@@ -8,6 +8,7 @@ import skillRoutes from "./routes/skill.js";
 import progectRoutes from "./routes/project.js";
 import contactRoutes from "./routes/contact.js";
 import authtRoutes from "./routes/admin.js";
+import settingsRoutes from "./routes/settings.js";
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,4 +32,6 @@ app.use("/api/projects", progectRoutes);
 app.use("/api/contact", contactRoutes);
 // AUTH ROUTES
 app.use("/api/admin", authtRoutes);
+// SETTINGS ROUTES
+app.use("/api/settings", settingsRoutes);
 export default app;

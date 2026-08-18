@@ -1,11 +1,21 @@
 import mongoose from "mongoose";
-const portfolioSettingsSchema = new mongoose.Schema({
+const settingsSchema = new mongoose.Schema({
+    _key: {
+        type: String,
+        unique: true,
+        default: "portfolio",
+        immutable: true,
+    },
     profile: {
         name: {
             type: String,
             trim: true,
         },
         title: {
+            type: String,
+            trim: true,
+        },
+        tagline: {
             type: String,
             trim: true,
         },
@@ -25,6 +35,7 @@ const portfolioSettingsSchema = new mongoose.Schema({
         linkedin: String,
         twitter: String,
         instagram: String,
+        website: String,
     },
     resume: {
         url: String,
@@ -36,6 +47,15 @@ const portfolioSettingsSchema = new mongoose.Schema({
         },
         message: String,
     },
+    typingTexts: {
+        type: [String],
+        default: [
+            "Full-Stack JavaScript Developer",
+            "Next.js & React Specialist",
+            "Node.js Backend Engineer",
+            "TypeScript Enthusiast",
+        ],
+    },
 }, { timestamps: true });
-const PortfolioSettings = mongoose.model("PortfolioSetting", portfolioSettingsSchema);
-export default PortfolioSettings;
+const Settings = mongoose.model("PortfolioSetting", settingsSchema);
+export default Settings;

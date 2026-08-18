@@ -25,6 +25,7 @@ export const checkAuth = async (
 		if (!user) return res.status(403).json({ message: "Unauthorized!" });
 
 		req.params.user_id = user._id.toString();
+
 		next();
 	} catch (error) {
 		return res.status(403).json({
