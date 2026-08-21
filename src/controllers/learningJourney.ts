@@ -33,7 +33,6 @@ export const getAllLearningJourneys = async (
 			learningJourneys: resulte,
 		});
 	} catch (error) {
-		console.error("Error fetching learning journeys:", error);
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 };
@@ -53,7 +52,6 @@ export const getLearningJourneyById = async (
 		}
 		res.status(200).json({ success: true, learningJourney });
 	} catch (error) {
-		console.error("Error fetching learning journey:", error);
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 };
@@ -80,7 +78,6 @@ export const createLearningJourney = async (
 
 		res.status(201).json({ success: true, learningJourney });
 	} catch (error) {
-		console.error("Error creating learning journey:", error);
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 };
@@ -109,7 +106,6 @@ export const updateLearningJourney = async (
 			.status(200)
 			.json({ success: true, learningJourney: updatedLearningJourney });
 	} catch (error) {
-		console.error("Error updating learning journey:", error);
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 };
@@ -131,7 +127,6 @@ export const deleteLearningJourney = async (
 			message: "Learning journey deleted successfully",
 		});
 	} catch (error) {
-		console.error("Error deleting learning journey:", error);
 		res.status(500).json({ success: false, message: "Internal server error" });
 	}
 };
