@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { SkillType } from "../types/skill.js";
 
-const skillSchema = new mongoose.Schema(
+const skillSchema = new mongoose.Schema<SkillType>(
 	{
 		name: {
 			type: String,
@@ -46,6 +47,10 @@ const skillSchema = new mongoose.Schema(
 		order: {
 			type: Number,
 			default: 0,
+		},
+		color: {
+			type: String,
+			trim: true,
 		},
 	},
 	{

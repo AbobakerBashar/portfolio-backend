@@ -16,4 +16,5 @@ export type SkillType = {
 	icon?: string;
 	featured?: boolean;
 	order?: number;
+	color: string;
 };

@@ -1,0 +1,37 @@
+import { Router } from "express";
+import {
+	createLearningJourney,
+	getAllLearningJourneys,
+	updateLearningJourney,
+	getLearningJourneyById,
+	deleteLearningJourney,
+} from "../controllers/learningJourney.js";
+import { learningJourneyValidation } from "../validations/learningJourney.js";
+import { validate } from "../middlewares/validate.js";
+import { checkAuth } from "../middlewares/auth.js";
+
+const router = Router();
+
+router.get("/", getAllLearningJourneys);
+
+router.get("/:id", getLearningJourneyById);
+
+router.post(
+	"/",
+	checkAuth,
+	learningJourneyValidation,
+	validate,
+	createLearningJourney,
+);
+
+router.put(
+	"/:id",
+	checkAuth,
+	learningJourneyValidation,
+	validate,
+	updateLearningJourney,
+);
+
+router.delete("/:id", checkAuth, deleteLearningJourney);
+
+export default router;

@@ -40,6 +40,7 @@ export const getById = async (req, res) => {
             icon: skill.icon || undefined,
             featured: skill.featured,
             order: skill.order,
+            color: skill.color,
         };
         res.status(200).json({
             success: true,
@@ -57,7 +58,7 @@ export const getById = async (req, res) => {
 // Create
 export const createSkill = async (req, res) => {
     try {
-        const { name, category, proficiency, icon, featured, order } = req.body;
+        const { name, category, proficiency, icon, featured, order, color } = req.body;
         const skill = await Skill.create({
             name,
             category,
@@ -65,6 +66,7 @@ export const createSkill = async (req, res) => {
             icon,
             featured,
             order,
+            color,
         });
         const result = {
             id: skill._id.toString(),
@@ -74,6 +76,7 @@ export const createSkill = async (req, res) => {
             icon: skill.icon || undefined,
             featured: skill.featured,
             order: skill.order,
+            color: skill.color,
         };
         res.status(201).json({
             success: true,
@@ -98,7 +101,7 @@ export const createSkill = async (req, res) => {
 // Edit Skill
 export const editSkill = async (req, res) => {
     const id = req.params.id;
-    const { name, category, proficiency, icon, featured, order } = req.body;
+    const { name, category, proficiency, icon, featured, order, color } = req.body;
     try {
         const skill = await Skill.findByIdAndUpdate(id, {
             name,
@@ -107,6 +110,7 @@ export const editSkill = async (req, res) => {
             icon,
             featured,
             order,
+            color,
         });
         if (!skill) {
             return res.status(400).json({
@@ -125,6 +129,7 @@ export const editSkill = async (req, res) => {
                 icon: skill.icon || undefined,
                 featured: skill.featured,
                 order: skill.order,
+                color: skill.color || "",
             },
         });
     }

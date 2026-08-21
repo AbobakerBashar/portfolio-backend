@@ -40,6 +40,10 @@ const skillSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    color: {
+        type: String,
+        trim: true,
+    },
 }, {
     timestamps: true,
 });

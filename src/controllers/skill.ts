@@ -54,6 +54,7 @@ export const getById = async (
 			icon: skill.icon || undefined,
 			featured: skill.featured,
 			order: skill.order,
+			color: skill.color,
 		};
 
 		res.status(200).json({
@@ -75,7 +76,8 @@ export const createSkill = async (
 	res: Response<{ success: boolean; skill: SkillType } | ErrorResponse>,
 ) => {
 	try {
-		const { name, category, proficiency, icon, featured, order } = req.body;
+		const { name, category, proficiency, icon, featured, order, color } =
+			req.body;
 		const skill = await Skill.create({
 			name,
 			category,
@@ -83,6 +85,7 @@ export const createSkill = async (
 			icon,
 			featured,
 			order,
+			color,
 		});
 
 		const result: SkillType = {
@@ -93,6 +96,7 @@ export const createSkill = async (
 			icon: skill.icon || undefined,
 			featured: skill.featured,
 			order: skill.order,
+			color: skill.color!,
 		};
 
 		res.status(201).json({
@@ -121,7 +125,8 @@ export const editSkill = async (
 	res: Response<{ success: boolean; skill: SkillType } | ErrorResponse>,
 ) => {
 	const id = req.params.id;
-	const { name, category, proficiency, icon, featured, order } = req.body;
+	const { name, category, proficiency, icon, featured, order, color } =
+		req.body;
 
 	try {
 		const skill = await Skill.findByIdAndUpdate(id, {
@@ -131,6 +136,7 @@ export const editSkill = async (
 			icon,
 			featured,
 			order,
+			color,
 		});
 
 		if (!skill) {
@@ -151,6 +157,7 @@ export const editSkill = async (
 				icon: skill.icon || undefined,
 				featured: skill.featured,
 				order: skill.order,
+				color: skill.color || "",
 			},
 		});
 	} catch (error) {
