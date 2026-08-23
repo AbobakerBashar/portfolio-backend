@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { experienceValidation } from "../validations/experience.js";
+import { validate } from "../middlewares/validate.js";
+import { checkAuth } from "../middlewares/auth.js";
+import { getAllExperiences, addExperience, editExperience, deleteExperience, } from "../controllers/experience.js";
+const router = Router();
+router.get("/", getAllExperiences);
+router.post("/", checkAuth, experienceValidation, validate, addExperience);
+router.put("/:id", checkAuth, experienceValidation, validate, editExperience);
+router.delete("/:id", checkAuth, deleteExperience);
+export default router;

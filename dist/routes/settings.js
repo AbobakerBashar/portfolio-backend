@@ -6,7 +6,7 @@ import { validate } from "../middlewares/validate.js";
 import { upload } from "../middlewares/multer.js";
 import { uploadImage } from "../middlewares/uploadImage.js";
 const router = Router();
-router.get("/", checkAuth, getSettings);
+router.get("/", getSettings);
 router.post("/", checkAuth, settingsValidationRules, validate, createSettings);
 router.put("/", checkAuth, settingsValidationRules, validate, updateSettings);
 router.patch("/", checkAuth, upload.single("avatar"), uploadImage, updateAvatar);
