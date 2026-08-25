@@ -44,6 +44,7 @@ export type ISettings = {
 
 	resume: {
 		url: string;
+		publicId: string;
 	};
 
 	availability: {

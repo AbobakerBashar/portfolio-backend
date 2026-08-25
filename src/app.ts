@@ -28,7 +28,7 @@ app.use(
 	}),
 );
 
-app.get("/", (_, res) => {
+app.get("/api", (_, res) => {
 	res.json({
 		success: true,
 		message: "Portfolio API is running correctly",
@@ -61,5 +61,31 @@ app.use("/api/education", educationRoutes);
 
 // EXPERIENCE ROUTES
 app.use("/api/experience", experienceRoutes);
+
+// ERROR HANDLER
+app.use(
+	(
+		err: any,
+		req: express.Request,
+		res: express.Response,
+		next: express.NextFunction,
+	) => {
+		console.error(err.stack);
+
+		res.status(500).json({
+			success: false,
+			message: "Internal server error",
+			error: err.message,
+		});
+	},
+);
+
+// 404 HANDLER
+app.use((req, res) => {
+	res.status(404).json({
+		success: false,
+		message: "Route not found",
+	});
+});
 
 export default app;
