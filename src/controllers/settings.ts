@@ -28,7 +28,14 @@ export const createSettings = async (
 			});
 
 		res.status(200).json({
-			settings,
+			settings: {
+				profile: settings.profile,
+				contact: settings.contact,
+				socialLinks: settings.socialLinks,
+				resume: settings.resume,
+				availability: settings.availability,
+				typingTexts: settings.typingTexts,
+			},
 			success: true,
 		});
 	} catch (error) {
@@ -66,7 +73,14 @@ export const getSettings = async (
 			});
 
 		res.status(200).json({
-			settings,
+			settings: {
+				profile: settings.profile,
+				contact: settings.contact,
+				socialLinks: settings.socialLinks,
+				resume: settings.resume,
+				availability: settings.availability,
+				typingTexts: settings.typingTexts,
+			},
 			success: true,
 		});
 	} catch (error) {
@@ -105,7 +119,14 @@ export const updateSettings = async (
 			});
 
 		res.status(200).json({
-			settings,
+			settings: {
+				profile: settings.profile,
+				contact: settings.contact,
+				socialLinks: settings.socialLinks,
+				resume: settings.resume,
+				availability: settings.availability,
+				typingTexts: settings.typingTexts,
+			},
 			success: true,
 		});
 	} catch (error) {
@@ -153,7 +174,14 @@ export const updateAvatar = async (
 		if (req.body.publicId) await cloudinary.uploader.destroy(req.body.publicId);
 
 		res.status(200).json({
-			settings,
+			settings: {
+				profile: settings.profile,
+				contact: settings.contact,
+				socialLinks: settings.socialLinks,
+				resume: settings.resume,
+				availability: settings.availability,
+				typingTexts: settings.typingTexts,
+			},
 			success: true,
 		});
 	} catch (error) {
@@ -201,7 +229,14 @@ export const updateResume = async (
 		if (req.body.publicId) await cloudinary.uploader.destroy(req.body.publicId);
 
 		res.status(200).json({
-			settings,
+			settings: {
+				profile: settings.profile,
+				contact: settings.contact,
+				socialLinks: settings.socialLinks,
+				resume: settings.resume,
+				availability: settings.availability,
+				typingTexts: settings.typingTexts,
+			},
 			success: true,
 		});
 	} catch (error) {

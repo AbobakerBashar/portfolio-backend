@@ -5,6 +5,6 @@ import { getAdmin, login, register } from "../controllers/admin.js";
 import { checkAuth } from "../middlewares/auth.js";
 const router = Router();
 router.get("/", checkAuth, getAdmin);
-router.post("/register", registerValidationRules, validate, register);
+router.post("/register", checkAuth, registerValidationRules, validate, register);
 router.post("/login", loginValidationRules, validate, login);
 export default router;

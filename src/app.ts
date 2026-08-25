@@ -15,6 +15,7 @@ import aboutRoutes from "./routes/about.js";
 import learningJourneyRoutes from "./routes/learningJourney.js";
 import educationRoutes from "./routes/education.js";
 import experienceRoutes from "./routes/experience.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 // MIDDLEWARES
 app.use(express.json());
@@ -63,22 +64,7 @@ app.use("/api/education", educationRoutes);
 app.use("/api/experience", experienceRoutes);
 
 // ERROR HANDLER
-app.use(
-	(
-		err: any,
-		req: express.Request,
-		res: express.Response,
-		next: express.NextFunction,
-	) => {
-		console.error(err.stack);
-
-		res.status(500).json({
-			success: false,
-			message: "Internal server error",
-			error: err.message,
-		});
-	},
-);
+app.use(errorHandler);
 
 // 404 HANDLER
 app.use((req, res) => {

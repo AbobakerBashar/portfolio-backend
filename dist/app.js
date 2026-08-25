@@ -13,6 +13,7 @@ import aboutRoutes from "./routes/about.js";
 import learningJourneyRoutes from "./routes/learningJourney.js";
 import educationRoutes from "./routes/education.js";
 import experienceRoutes from "./routes/experience.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +23,7 @@ app.use(cors({
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
 }));
-app.get("/", (_, res) => {
+app.get("/api", (_, res) => {
     res.json({
         success: true,
         message: "Portfolio API is running correctly",
@@ -46,4 +47,13 @@ app.use("/api/journeys", learningJourneyRoutes);
 app.use("/api/education", educationRoutes);
 // EXPERIENCE ROUTES
 app.use("/api/experience", experienceRoutes);
+// ERROR HANDLER
+app.use(errorHandler);
+// 404 HANDLER
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        message: "Route not found",
+    });
+});
 export default app;

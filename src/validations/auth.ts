@@ -62,7 +62,7 @@ export const settingsValidationRules = [
 		.isLength({ max: 1000 })
 		.withMessage("Bio cannot exceed 1000 characters"),
 
-	body("profile.avatar")
+	body("profile.avatar.url")
 		.optional({ values: "falsy" })
 		.isURL()
 		.withMessage("Avatar must be a valid URL"),

@@ -23,7 +23,10 @@ const settingsSchema = new mongoose.Schema({
             type: String,
             trim: true,
         },
-        avatar: String,
+        avatar: {
+            url: String,
+            publicId: String,
+        },
     },
     contact: {
         email: String,
@@ -39,6 +42,7 @@ const settingsSchema = new mongoose.Schema({
     },
     resume: {
         url: String,
+        publicId: String,
     },
     availability: {
         status: {
