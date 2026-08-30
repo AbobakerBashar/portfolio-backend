@@ -69,6 +69,7 @@ export const createContact = async (
 			message: "Email sent successfully!",
 		});
 	} catch (error) {
+		console.error("Error creating contact:", error);
 		res.status(500).json({
 			success: false,
 			message: "Internal server error.",
