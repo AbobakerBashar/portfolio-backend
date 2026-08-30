@@ -55,7 +55,7 @@ export const createContact = async (
 		};
 
 		const html = mailGenerator.generate(emailContent);
-
+		console.log("Email content generated:", html);
 		await transporter.sendMail({
 			from: process.env.SMTP_USER,
 			to: process.env.SMTP_USER,
