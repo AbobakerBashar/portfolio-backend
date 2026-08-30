@@ -30,7 +30,6 @@ app.use(
 );
 
 app.get("/api", (_, res) => {
-	console.log("🔥 ROOT ROUTE CALLED");
 	res.json({
 		success: true,
 		message: "Portfolio API is running correctly",

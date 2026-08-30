@@ -13,7 +13,6 @@ export const createContact = async (
 	req: Request<{}, unknown, ContactInput>,
 	res: Response<CreateContactRes>,
 ) => {
-	console.log("🔥🔥🔥 CREATE CONTACT CALLED 🔥🔥🔥");
 	const { name, email, subject, message } = req.body;
 
 	try {
@@ -56,7 +55,7 @@ export const createContact = async (
 		};
 
 		const html = mailGenerator.generate(emailContent);
-		console.log("Email content generated:", html);
+
 		await transporter.sendMail({
 			from: process.env.SMTP_USER,
 			to: process.env.SMTP_USER,
