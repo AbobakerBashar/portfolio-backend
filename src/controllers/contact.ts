@@ -38,8 +38,6 @@ export const createContact = async (
 			},
 		});
 
-		const transporter = createTransporter();
-
 		console.log("Testing SMTP connection...");
 
 		await transporter.verify();
