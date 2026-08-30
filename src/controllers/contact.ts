@@ -37,6 +37,15 @@ export const createContact = async (
 				link: process.env.FRONTEND_URL!,
 			},
 		});
+
+		const transporter = createTransporter();
+
+		console.log("Testing SMTP connection...");
+
+		await transporter.verify();
+
+		console.log("✅ SMTP connection successful");
+
 		const emailContent = {
 			body: {
 				greeting: "Hello Abobaker",
