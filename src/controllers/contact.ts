@@ -13,6 +13,7 @@ export const createContact = async (
 	req: Request<{}, unknown, ContactInput>,
 	res: Response<CreateContactRes>,
 ) => {
+	console.log("🔥🔥🔥 CREATE CONTACT CALLED 🔥🔥🔥");
 	const { name, email, subject, message } = req.body;
 
 	try {
