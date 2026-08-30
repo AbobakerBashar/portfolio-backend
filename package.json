@@ -21,8 +21,10 @@
 		"express": "^5.2.1",
 		"express-validator": "^7.3.2",
 		"jsonwebtoken": "^9.0.3",
+		"mailgen": "^2.0.36",
 		"mongoose": "^9.9.1",
-		"multer": "^2.2.0"
+		"multer": "^2.2.0",
+		"nodemailer": "^9.0.6"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^6.0.0",
@@ -32,6 +34,7 @@
 		"@types/jsonwebtoken": "^9.0.10",
 		"@types/multer": "^2.2.0",
 		"@types/node": "^26.1.2",
+		"@types/nodemailer": "^8.0.1",
 		"tsx": "^4.23.5",
 		"typescript": "^7.0.2"
 	}
