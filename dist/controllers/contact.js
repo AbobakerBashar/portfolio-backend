@@ -25,6 +25,9 @@ export const createContact = async (req, res) => {
                 link: process.env.FRONTEND_URL,
             },
         });
+        console.log("Testing SMTP connection...");
+        await transporter.verify();
+        console.log("✅ SMTP connection successful");
         const emailContent = {
             body: {
                 greeting: "Hello Abobaker",
@@ -55,6 +58,7 @@ export const createContact = async (req, res) => {
         });
     }
     catch (error) {
+        console.error("Error creating contact:", error);
         res.status(500).json({
             success: false,
             message: "Internal server error.",

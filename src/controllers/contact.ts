@@ -1,13 +1,7 @@
 import type { Request, Response } from "express";
 import type { ContactInput, CreateContactRes } from "../types/contact.ts";
 import Contact from "../models/Contact.js";
-import { createTransporter } from "../config/nodemailer.js";
-
-import dotenv from "dotenv";
-
-dotenv.config();
-
-import Mailgen from "mailgen";
+import { sendEmail } from "../config/resend.js";
 
 export const createContact = async (
 	req: Request<{}, unknown, ContactInput>,
@@ -29,46 +23,18 @@ export const createContact = async (
 				success: false,
 			});
 
-		const transporter = createTransporter();
-		const mailGenerator = new Mailgen({
-			theme: "default",
-			product: {
-				name: "Abobaker's Portfolio",
-				link: process.env.FRONTEND_URL!,
-			},
-		});
-
-		console.log("Testing SMTP connection...");
-
-		await transporter.verify();
-
-		console.log("✅ SMTP connection successful");
-
-		const emailContent = {
-			body: {
-				greeting: "Hello Abobaker",
-				intro: "You received a new message from your portfolio.",
-				table: {
-					data: [
-						{
-							Name: name,
-							Email: email,
-							Subject: subject,
-						},
-					],
-				},
-				outro: message,
-			},
-		};
-
-		const html = mailGenerator.generate(emailContent);
-
-		await transporter.sendMail({
-			from: process.env.SMTP_USER,
-			to: process.env.SMTP_USER,
+		await sendEmail({
+			subject,
 			replyTo: email,
-			subject: `Portfolio Contact: ${subject}`,
-			html,
+			html: `
+        <h2>New Contact Message</h2>
+
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+
+        <h3>Message</h3>
+        <p>${message}</p>
+      `,
 		});
 
 		res.status(201).json({
